@@ -1,13 +1,6 @@
 class Solution {
 public:
     long long coloredCells(int n) {
-        int t = 1;
-        long long ans = 1;
-
-        while(t <= n){
-            ans = ans + 4*(t-1);
-            t++;
-        }
-        return ans;
+        return (1 + 2 * (long long) n * (n - 1));
     }
 };
