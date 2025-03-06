@@ -4,9 +4,8 @@ public:
         int n = grid.size();
         long long N = n*n;
         long long actSum = 0, expSum = N * (N + 1) / 2;
-        long long actSqSum = 0;
-        long long expSqSum = N * (N + 1)*(2*N + 1) / 6;
-       
+        long long actSqSum = 0, expSqSum = N * (N + 1)*(2*N + 1)/6;
+
         for(int i = 0; i<n; i++){
             for(int j = 0; j<n; j++){
                 actSum += grid[i][j];
