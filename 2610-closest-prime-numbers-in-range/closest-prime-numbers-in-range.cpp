@@ -1,38 +1,39 @@
 class Solution {
 public:
     vector<int> closestPrimes(int left, int right) {
-        vector<bool> primes = helper(right);
-        vector<int>temp;
+        vector<bool> isPrimes = eratosthenes(right);
+        vector<int> primes;
 
-        for(int i = left; i<= right;i++){
-            if(primes[i]){
-                temp.push_back(i);
+        for(int i = left; i<=right; i++){
+            if(isPrimes[i]){
+                primes.push_back(i);
             }
         }
         int minDiff = INT_MAX;
         vector<int> result(2, -1);
-        for(int i = 1; i<temp.size(); i++){
-            int diff = temp[i] - temp[i-1];
+        for(int i = 1; i<primes.size(); i++){
+            int diff = primes[i] - primes[i-1];
             if(diff < minDiff){
                 minDiff = diff;
-                result = {temp[i-1], temp[i]};
+                result[0] = primes[i-1];
+                result[1] = primes[i];
             }
         }
         return result;
     }
-private:
-    vector<bool> helper(int right){
-        vector<bool>primes(right+1, true);
-        primes[0] = false;
-        primes[1] = false;
 
-        for(int i = 2; i<=right; i++){
-            if(primes[i]){
-                for(int j = 2*i; j<=right; j= j + i){
-                    primes[j] = false;
+private:
+    vector<bool> eratosthenes(int right){
+        vector<bool> isPrime(right+1, true);
+        isPrime[0] = false;
+        isPrime[1] = false;
+        for(int i = 2; i<isPrime.size(); i++){
+            if(isPrime[i]){
+                for(int j = 2*i; j<isPrime.size(); j = j + i){
+                    isPrime[j] = false;
                 }
             }
         }
-        return primes;
+        return isPrime;
     }
 };
