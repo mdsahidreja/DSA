@@ -27,7 +27,7 @@ private:
         vector<bool> isPrime(right+1, true);
         isPrime[0] = false;
         isPrime[1] = false;
-        for(int i = 2; i<isPrime.size(); i++){
+        for(int i = 2; i*i<=right; i++){
             if(isPrime[i]){
                 for(int j = 2*i; j<isPrime.size(); j = j + i){
                     isPrime[j] = false;
