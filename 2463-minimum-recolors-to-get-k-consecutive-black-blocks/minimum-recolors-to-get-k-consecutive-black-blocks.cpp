@@ -1,20 +1,18 @@
 class Solution {
 public:
     int minimumRecolors(string blocks, int k) {
-        int n = blocks.size();
-        
         int result = INT_MAX;
-        for(int i = 0; i < n - k + 1; i++){
-            int J = i;
-            int temp = 0;
-            while(J < n && J < i + k){
-                if(blocks[J] == 'W'){
-                    temp++;
-                }
-                J++;
-            }
-            result = min(result, temp);
-        }
-        return result;
+        int n = blocks.size();
+       for(int i = 0; i<=n-k; i++){
+           int w = 0;
+           for(int j = i; j-i+1<=k; j++){
+               if(blocks[j] == 'W'){
+                w++;
+               }
+           }
+           result = min(result, w);
+
+       }
+       return result;
     }
 };
