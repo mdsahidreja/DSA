@@ -3,16 +3,22 @@ public:
     int minimumRecolors(string blocks, int k) {
         int result = INT_MAX;
         int n = blocks.size();
-       for(int i = 0; i<=n-k; i++){
-           int w = 0;
-           for(int j = i; j-i+1<=k; j++){
-               if(blocks[j] == 'W'){
+        int i = 0;
+        int j = 0;
+        int w = 0;
+        while(j < n){
+            if(blocks[j] == 'W'){
                 w++;
-               }
-           }
-           result = min(result, w);
-
-       }
-       return result;
+            }
+            if(j - i + 1 == k){
+                result = min(result, w);
+                if(blocks[i] == 'W'){
+                    w--;
+                }
+                i++;
+            }
+            j++;
+        }
+        return result;
     }
 };
