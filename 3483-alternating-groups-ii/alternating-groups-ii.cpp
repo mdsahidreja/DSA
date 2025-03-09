@@ -9,9 +9,10 @@ public:
 
         int n = colors.size();
         int i = 0;
+        int j = 1;
         
         int answer = 0;
-        for(int j = 1; j<n; j++){
+        while(j<n){
             
             if(colors[j] == colors[j-1]){
                 // j is not alternating
@@ -24,6 +25,7 @@ public:
                 answer++;
                 i++;
             }
+            j++;
         }
         return answer;
     }
