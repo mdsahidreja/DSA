@@ -1,26 +1,19 @@
 class Solution {
 public:
     int numberOfAlternatingGroups(vector<int>& colors, int k) {
-        //update the colors array as it is circular
+        //update colors array to make it circular
         for(int i = 0; i<k-1; i++){
             colors.push_back(colors[i]);
         }
-
-
         int n = colors.size();
+        int answer = 0;
+
         int i = 0;
         int j = 1;
-        
-        int answer = 0;
         while(j<n){
-            
-            if(colors[j] == colors[j-1]){
-                // j is not alternating
+            if(colors[j] == colors[j-1]){//if the current group is not alternating 
                 i = j;
-                
-               //skip the current window and go to the next window
             }
-
             if(j-i+1 == k){
                 answer++;
                 i++;
