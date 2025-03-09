@@ -16,7 +16,7 @@ public:
             if(colors[j] == colors[j-1]){
                 // j is not alternating
                 i = j;
-                j = i;
+                
                 continue;//skip the current window and go to the next window
             }
 
