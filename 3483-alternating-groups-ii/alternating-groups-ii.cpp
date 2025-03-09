@@ -17,7 +17,7 @@ public:
                 // j is not alternating
                 i = j;
                 
-                continue;//skip the current window and go to the next window
+               //skip the current window and go to the next window
             }
 
             if(j-i+1 == k){
