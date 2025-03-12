@@ -12,29 +12,29 @@ class Solution {
     // from the source vertex src.
     vector<int> dijkstra(vector<vector<pair<int, int>>> &adj, int source) {
         // Code here
-        //build the min heap
+        int n = adj.size();
         priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>>pq;
-        vector<int> result(adj.size(), INT_MAX);//at first every node is infinity
-        result[source] = 0;//distance from source to source is 0
-        pq.push({0, source});//push the better path for source in the min heap
+        vector<int> result(n, INT_MAX);
+        result[source] = 0;
+        pq.push({0, source});
         
         while(!pq.empty()){
+            int dist = pq.top().first;
             int node = pq.top().second;
-            int distance = pq.top().first;
             pq.pop();
-            
-            for(auto p: adj[node]){
-                int adjNode = p.first;
-                int weight = p.second;
-                
-                if(distance+weight < result[adjNode]){
-                    result[adjNode] = distance+weight;
-                    pq.push({distance+weight, adjNode});
+            for(auto vec: adj[node]){
+                int nd = vec.first;
+                int wt = vec.second;
+                if(dist+wt < result[nd]){
+                    result[nd] = dist+wt;
+                    pq.push({dist+wt, nd});
                 }
+                
             }
             
         }
         return result;
+        
     }
 };
 
